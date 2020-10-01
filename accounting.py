@@ -1,6 +1,22 @@
-melon_cost = 1.00
+def underpaid(file_path):
+    melon_cost = 1.00
+    customer_file = open(file_path)
+    for line in customer_file: 
+        line = line.rstrip()
+        words = line.split('|')
 
-customer1_name = "Joe"
+        name = words[1]
+        melons = words[2]
+        paid = words[3]
+
+        if float(paid) < (float(melons) * melon_cost):
+            print(f"{name} paid {paid}, expected ${float(melons) * 3}") 
+    customer_file.close()
+
+underpaid("customer-orders.txt")
+
+
+"""customer1_name = "Joe"
 customer1_melons = 5
 customer1_paid = 5.00
 
@@ -59,3 +75,4 @@ if customer6_expected != customer6_paid:
     print(f"{customer6_name} paid ${customer6_paid:.2f},",
           f"expected ${customer6_expected:.2f}"
           )
+"""
