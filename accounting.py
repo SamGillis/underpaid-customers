@@ -1,14 +1,23 @@
+ melon_cost = 1.00
+
 def underpaid(file_path):
-    melon_cost = 1.00
+""" Takes in a file and prints out the customers that underpaid for 
+their melons """
+    ## Opens the inputed file path into a file variable
     customer_file = open(file_path)
+    ##loops over every line in the file 
     for line in customer_file: 
+        ##reads each line in the file
         line = line.rstrip()
+        ## splits the line based on '|' to parse
         words = line.split('|')
 
+        ##creates new variables to store the values in 
         name = words[1]
         melons = words[2]
         paid = words[3]
 
+        ##checks if sale was underpaid for 
         if float(paid) < (float(melons) * melon_cost):
             print(f"{name} paid {paid}, expected ${float(melons) * 3}") 
     customer_file.close()
@@ -16,7 +25,9 @@ def underpaid(file_path):
 underpaid("customer-orders.txt")
 
 
-"""customer1_name = "Joe"
+""" OLD CODE FROM PROMPT
+
+customer1_name = "Joe"
 customer1_melons = 5
 customer1_paid = 5.00
 
